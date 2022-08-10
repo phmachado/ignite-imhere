@@ -32,7 +32,9 @@ export default function Home() {
       {
         text: "Sim",
         onPress: () =>
-          Alert.alert("Deletado!", "Participante removido com sucesso."),
+          setParticipants((prevState) =>
+            prevState.filter((participant) => participant !== name)
+          ),
       },
       { text: "Não", style: "cancel" },
     ]);
