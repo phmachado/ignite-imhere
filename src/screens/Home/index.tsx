@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   Text,
@@ -12,17 +13,7 @@ import Participant from "../../components/Participant";
 import { styles } from "./styles";
 
 export default function Home() {
-  const participants = [
-    "João",
-    "Jorge",
-    "Maria",
-    "José",
-    "Bruno",
-    "Lucas",
-    "Hélio",
-    "Mateus",
-    "Caio",
-  ];
+  const [participants, setParticipants] = useState<string[]>(["Pedro"]);
 
   function handleParticipantAdd(name: string) {
     if (participants.includes(name)) {
@@ -31,6 +22,7 @@ export default function Home() {
         "Já existe um participante na lista com esse nome."
       );
     }
+    setParticipants((prevState) => [...prevState, name]);
   }
 
   function handleParticipantRemove(name: string) {
@@ -57,7 +49,7 @@ export default function Home() {
         />
         <TouchableOpacity
           style={styles.button}
-          onPress={() => handleParticipantAdd("Caio")}
+          onPress={() => handleParticipantAdd("Bruno")}
         >
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
