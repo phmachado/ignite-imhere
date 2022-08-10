@@ -6,7 +6,11 @@ import { styles } from "./styles";
 
 export default function Home() {
   function handleParticipantAdd() {
-    console.log("Clique");
+    console.log("Add");
+  }
+
+  function handleParticipantRemove(name: string) {
+    console.log("Remove", name);
   }
 
   return (
@@ -25,7 +29,10 @@ export default function Home() {
         </TouchableOpacity>
       </View>
 
-      <Participant name="Pedro" />
+      <Participant
+        name="Pedro"
+        onRemove={() => handleParticipantRemove("Pedro")}
+      />
     </View>
   );
 }
